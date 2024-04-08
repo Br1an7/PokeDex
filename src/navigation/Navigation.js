@@ -3,9 +3,8 @@ import { Image } from "react-native"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "react-native-vector-icons/FontAwesome5"
 import FavoriteScreen from "../Screen/FavoriteScreen"
-import PokedexScreen from "../Screen/PokedexScreen"
+import PokedexNavigation from "./PokeDexNavigation";
 import AccountScreen from "../Screen/AccountScreen"
-import { Header } from "react-native/Libraries/NewAppScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -15,19 +14,17 @@ export default function Navigation() {
       <Tab.Screen name="Favorite" component={FavoriteScreen} options={{
         tabBarLabel: "Favoritos",
         tabBarIcon: ({color, size}) => (
-          <Icon name="heart" color={color} size={size} />
-        )
+          <Icon name="heart" color={color} size={size}/>), headerTitle: "Favorito", headerTitleAlign: 'center'      
       }} />
-      <Tab.Screen name="Pokedex" component={PokedexScreen} options={{
-        tabBarLabel: "",
-        tabBarIcon: () => renderPokeball(),
+      <Tab.Screen name="Pokedax" component={PokedexNavigation} options={{
+        tabBarLabel: "", 
+        tabBarIcon: () => renderPokeball(), headerTitleAlign: 'center'
       }}/>
       <Tab.Screen name="Account" component={AccountScreen} options={{
         tabBarLabel: "Cuenta",
         tabBarIcon: ({color, size}) => (
           <Icon name="user" color={color} size={size}/>
-        )
-        
+        ), headerTitle: "Cuenta", headerTitleAlign: 'center'
       }}/>
     </Tab.Navigator>
   );
